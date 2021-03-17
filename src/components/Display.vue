@@ -16,7 +16,7 @@
       phoneNumber: "+61 256 355 777",
       time: "8:50pm"
      };
-    },
+    }
 
     // getData: function(){
     //   this.id = "1"
