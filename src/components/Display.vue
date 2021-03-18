@@ -1,6 +1,6 @@
 <script lang="ts">
   import {defineComponent} from "vue";
-  import { OwnerService } from "../services/OwnerService.ts";
+  import { OwnerService } from "@/services/OwnerService.ts";
   //import { PostsService } from "../services/PostsService"; //Javascript file format works as well
 
   export default defineComponent({
