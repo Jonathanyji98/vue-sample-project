@@ -1,63 +1,31 @@
 <script lang="ts">
   import {defineComponent} from "vue";
-  //import { OwnerService } from "../services/ownerService.ts";
-  import PostsService from "../services/PostsService.js"
-
-
+  import { OwnerService } from "../services/OwnerService.ts";
+  //import { PostsService } from "../services/PostsService"; //Javascript file format works as well
 
   export default defineComponent({
     name: 'Display',
+    
+    setup(){
+      //const data = new PostsService(); //Javascript file format works as well
+      const data = new OwnerService();
+      const dataArray = data.get();
 
-    // setup(){
-    //   console.log("THE DISPLAY PAGE WORKS");
-    //   this.fetchPosts();
-    // },
-    created() {
-			// this.fetchPosts()
-		},
+      function test(){
+        let i = 2
+        return i
+      }
 
-    data: function() {
+      const newNumber = 1 + test();
       
       return {
-        // dataArray: [
-        //       {
-        //         id: "1",
-        //         name: "Bob",
-        //         address: "Unit 12 Yeronga Street, 30000 Queensland",
-        //         phoneNumber: "+61 256 355 777",
-        //         time: "8:50pm"
-        //       },
-        //       {
-        //         id: "2",
-        //         name: "Andy",
-        //         address: "Unit 115 Yeronga Street, 30000 Queensland",
-        //         phoneNumber: "+61 993 445 002",
-        //         time: "9:50pm"
-        //       }
-        //     ]
-
-        dataArray: [],
-        num: PostsService.getnumber()
+        dataArray,
+        newNumber
       }
-    },
 
-  
+    }
 
-    // methods:{
-    //   fetchPosts() {
-    //     return PostsService.get()
-    //     .then(result =>{
-    //       this.dataArray = result.data
-    //     })
-    //   }
-    // }
-      
-    
-
-
-
-
-    });
+});
     
 </script>
 
@@ -70,6 +38,7 @@
       <p><b>Time:</b> {{entry.time}}</p>
       <br>
     </div>
+    <p>{{newNumber}}</p>
 </template>
 
 <style>
