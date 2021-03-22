@@ -1,4 +1,6 @@
- class OwnerService {
+ import axios from "axios";
+
+ export class OwnerService {
   get() {
     var data = [
         {
@@ -19,5 +21,35 @@
       ];
 
     return data;
+  }
+
+  static createData(){
+    let data = {
+      name: "Chen",
+      address: "Unit 666 Boundry Street, 30000 Queensland",
+      phoneNumber: "+61 256 355 777",
+      time: "8:50pm"
+    }
+
+    axios.post("http://localhost:3000/create", data)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  static getTest(){
+    axios.get("http://localhost:3000/").then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  getTest2(){
+    axios.get("/")
   }
 }

@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
+import { OwnerService } from "@/services/OwnerService.ts";
 
 export default defineComponent({
     name: "NewFormComponent",
@@ -11,6 +12,7 @@ export default defineComponent({
         var time = "8:50pm";
 
     function onSubmit(){
+        OwnerService.createData();
         console.log("This button will do a http post request");
     }
 

@@ -1,14 +1,18 @@
-//import OwnerService from './src/services/OwnerService.ts'
-
-// var OwnerService = require("./src/services/OwnerService.ts")
 
 //To start server, type 'node Server.js' into the terminal
 const express = require('express')
 const app = express()
 const port = 3000
 const router = express.Router()
+var cors = require('cors')
 
+app.use(cors())
 
+// Use this because body-parser is deprecated
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+
+// Test database
 var data = [
     {
       id: "5",
@@ -28,8 +32,6 @@ var data = [
   ];
 
 
-
-
 app.listen(port, (error) => {
     //If there's an error print error message otherwise print listening on port number
     if (error) {
@@ -39,17 +41,15 @@ app.listen(port, (error) => {
     }
 })
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-
 // middleware that is specific to this router
 router.use(function timelog(req, res, next) {
     console.log('Time: ', Date.now())
     next()
 })
 
-app.get('/', (req, res) => {
-    res.send("Hello World home page")
+app.get('/', (req, res, next) => {
+    res.json({
+        msg: "Hello World home page"})
 })
 
 app.get('/about', (req, res) => {
@@ -57,7 +57,7 @@ app.get('/about', (req, res) => {
 })
 
 
-app.post('/', function(req, res) {
+app.post('/create', function(req, res) {
     //Check if all fields are provided and are valid
     // if (!req.body.name || !req.address || !req.phoneNumber || !req.time) {
     //     res.status(400)
@@ -76,9 +76,8 @@ app.post('/', function(req, res) {
 
     // res.json({ message: "New data added" + "ID: " + newId })
 
-    console.log(req.body)
-    res.status(200).send('Post Created entry')
+    console.log("DATA:",req.body)
     data.push(req.body)
     console.log("NEW DATA ADDED CHECK: " + JSON.stringify(data))
-
+    res.status(200).send('Post Created entry')
 })
