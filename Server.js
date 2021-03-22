@@ -1,4 +1,6 @@
-import { OwnerService } from './src/services/OwnerService.ts'
+//import OwnerService from './src/services/OwnerService.ts'
+
+var OwnerService = require("./src/services/OwnerService.ts")
 
 //To start server, type 'node Server.js' into the terminal
 const express = require('express')
