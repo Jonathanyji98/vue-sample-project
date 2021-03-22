@@ -7,7 +7,6 @@ const router = express.Router()
 var cors = require('cors')
 
 app.use(cors())
-
 // Use this because body-parser is deprecated
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))

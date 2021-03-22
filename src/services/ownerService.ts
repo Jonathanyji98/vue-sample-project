@@ -49,7 +49,4 @@
     });
   }
 
-  getTest2(){
-    axios.get("/")
-  }
 }
