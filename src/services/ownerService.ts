@@ -32,19 +32,20 @@
     }
 
     axios.post("http://localhost:3000/create", data)
-    .then(function (response) {
+    .then( (response) => {
       console.log(response);
     })
-    .catch(function (error) {
+    .catch( (error) => {
       console.log(error);
     });
   }
 
   static getTest(){
-    axios.get("http://localhost:3000/").then(function (response) {
+    axios.get("http://localhost:3000/")
+    .then( (response) => {
       console.log(response);
     })
-    .catch(function (error) {
+    .catch( (error) => {
       console.log(error);
     });
   }
